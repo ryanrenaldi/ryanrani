@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title id="title"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="voucher()">
+        $(if chap-id)
+        <form name="sendin" action="$(link-login-only)" method="post">
+            <input type="hidden" name="username" />
+            <input type="hidden" name="password" />
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+        </form>
+
+        <script type="text/javascript" src="md5.js"></script>
+        <script type="text/javascript">
+            function doLogin() {
+                document.sendin.username.value = document.login.username.value;
+                document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value +
+                    '$(chap-challenge)');
+                document.sendin.submit();
+                return false;
+            }
+        </script>
+        $(endif)
+
+            <div id="main" class="main">
+            
+            <div id="konten"><div id="fotoloveu"><div class="image">
+<!-- Foto Akhir --><img src=" logo.png" id="animasi" width="140px" height="140"/></div></div>
+
+<p class='catatan' id='koteks'>
+<marquee scrollamount="8" id="marq"><i id="spasi"></i>Sesulit apapun Jalan nya,<i id="spasi"></i>
+Jangan perna Berfikir Untuk menyerah (:<i id="spasi"></i>
+</marquee>
+</p>
+            </div>
+            <div class="box">
+                <button id="btnvrc" class="small-button" onclick="voucher();"><i class="icon icon-ticket">&#xe802;</i> VOUCHER</button>
+                <button id="btnmem" class="small-button" onclick="member();"><i class="icon icon-user-circle-o">&#xf2be;</i> RYAN</button>
+                <!-- 
+                <button id="qr" class="small-button" onclick="window.location='https://laksa19.github.io/myqr';"> <i class="icon icon-qrcode">&#xe801;</i> QR Code</button>
+                -->
+            </div>
+            <div class="box" id="infologin">
+            </div>
+            <form autocomplete="off" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"
+                $(endif)>
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+                <input class="username" name="username" type="text" value="$(username)" />
+                <input class="password" name="password" placeholder="Password" type="hidden" />
+
+                <button class="button" type="submit"><i class="icon icon-login">&#xe803;</i> Login</button>
+
+            </form>
+
+            $(if trial == 'yes')
+            <div class="box">TRIAL GRATIS  <a style="text-decoration: underline; color:#fff;" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">KLIK
+                    DI SINI YA</a></div>
+            $(endif)
+
+            $(if error)<div class="notice">$(error)</div>$(endif)
+
+            <table class="table">
+                    <caption style="font-size: 16px; font-weight: bold; margin-bottom:5px;"> 𝚔𝚎𝚝𝚒𝚔𝚊 𝚆𝚒-𝙵𝚒 𝚖𝚞𝚞 𝚖𝚞𝚕𝚊𝚒 𝚖𝚎𝚕𝚊𝚖𝚋𝚊𝚝 𝚋𝚎𝚛𝚊𝚛𝚝𝚒 𝚊𝚍𝚊 𝚋𝚊𝚗𝚢𝚊𝚔 𝚘𝚛𝚊𝚗𝚐 𝚢𝚊𝚗𝚐 𝚖𝚎𝚗𝚐𝚐𝚞𝚗𝚊𝚔𝚊𝚗 𝚗𝚢𝚊
+</caption>
+         
+                </table>
+                <br />
+                <div>
+                    [ 𝚃𝙰𝙿𝙸 𝙸𝙽𝙸 𝙱𝚄𝙺𝙰𝙽 𝚃𝙴𝙽𝚃𝙰𝙽𝙶 𝚆𝙸-𝙵𝙸 ]<br>
+                </div>
+</html> 
+<audio controls autoplay>
+    <source src="musik.ogg" type="audio/ogg">
+    <source src="musik.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+        </div>
+        <br />
+        <div class="box" style="color:#fff;">
+            <i>Copyright &copy; 2023 Javascript</i><br />
+            <i>Powered by <a style="color:#fff; text-decoration:underline;" href="https://laksa19.github.io">𝚁𝚢𝚊𝚗 𝚁𝚎𝚗𝚊𝚕𝚍𝚒</a></i>
+            <!-- Tolong jangan dihilangkan bagian ini-->
+        </div>
+
+<script type="text/javascript">
+var hostname = window.location.hostname;
+document.getElementById('title').innerHTML = hostname  + " > login";
+
+document.login.username.focus();
+
+var infologin = document.getElementById('infologin');
+infologin.innerHTML = "Masukkan Kode Voucher<br>kemudian klik login.";
+
+// login page 2 mode by Laksamadi Guko
+var username = document.login.username;
+var password = document.login.password;
+
+username.placeholder = "Kode Voucher";
+
+// set password = username
+function setpass() {
+    var user = username.value
+    //user = user.toLowerCase();
+    username.value = user;
+    password.value = user;
+}
+
+username.onkeyup = setpass;
+
+// change to voucher mode
+function voucher() {
+    username.focus();
+    username.onkeyup = setpass;
+    username.placeholder = "Kode Voucher";
+    username.style = "border-radius:3px;"
+    password.type = "hidden";
+    infologin.innerHTML = "Masukkan Kode Voucher<br>kemudian klik login.";
+}
+
+// change to member mode
+function member() {
+    username.focus();
+    username.onkeyup = "";
+    username.placeholder = "Username";
+    username.style = "border-radius:3px 3px 0px 0px;"
+    password.type = "password";
+    infologin.innerHTML = "Masukkan Username dan Password<br>kemudian klik login.";
+}
+</script>
+</body>
+
+</html>
+
